@@ -123,6 +123,8 @@ function init() {
                             imageminGifsicle(gifOption),
                             imageminSvgo(),
                         ],
+                    }).then(function () {
+                        console.log('Compression Finish!');
                     });
                     return [2 /*return*/];
             }

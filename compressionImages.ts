@@ -94,6 +94,8 @@ async function init(): Promise<void> {
       imageminGifsicle(gifOption),
       imageminSvgo(),
     ],
+  }).then(() => {
+    console.log('Compression Finish!')
   })
 }
 
