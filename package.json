@@ -1,7 +1,7 @@
 {
   "name": "compression-images",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "compressionImages.js",
   "repository": "https://github.com/miyabin66/compression-images.git",
   "author": "miyabin66",
   "scripts": {

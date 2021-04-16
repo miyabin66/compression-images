@@ -42,14 +42,19 @@ var imageminMozjpeg = require('imagemin-mozjpeg');
 var imageminPngquant = require('imagemin-pngquant');
 var imageminGifsicle = require('imagemin-gifsicle');
 var imageminSvgo = require('imagemin-svgo');
+// 圧縮したい画像を入れるフォルダー
 var currentFolder = './images/';
+// 圧縮された画像が入るフォルダー
 var compressionFolder = './compressionImages/';
+// jpegの圧縮設定
 var jpegOption = {
     quality: 50
 };
+// pngの圧縮設定
 var pngOption = {
     quality: [0.3, 0.5]
 };
+// gifの圧縮設定
 var gifOption = {
     colors: 128
 };

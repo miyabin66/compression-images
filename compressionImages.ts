@@ -6,15 +6,20 @@ const imageminPngquant = require('imagemin-pngquant')
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo')
 
+// 圧縮したい画像を入れるフォルダー
 const currentFolder: string = './images/'
+// 圧縮された画像が入るフォルダー
 const compressionFolder: string = './compressionImages/'
 
+// jpegの圧縮設定
 const jpegOption: {quality: number} = {
   quality: 50
 }
+// pngの圧縮設定
 const pngOption: {quality: number[]} = {
   quality: [0.3, 0.5]
 }
+// gifの圧縮設定
 const gifOption: {colors: number} = {
   colors: 128
 }
