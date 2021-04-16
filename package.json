@@ -5,7 +5,7 @@
   "repository": "https://github.com/miyabin66/compression-images.git",
   "author": "miyabin66",
   "scripts": {
-    "start": "node compressionImages.ts"
+    "start": "node compressionImages.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -14,6 +14,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^9.0.0"
+    "imagemin-svgo": "^9.0.0",
+    "typescript": "^4.2.4"
   }
 }

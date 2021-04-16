@@ -6,19 +6,22 @@ const imageminPngquant = require('imagemin-pngquant')
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo')
 
-const currentFolder = './images/'
-const compressionFolder = './dist/'
+const currentFolder: string = './images/'
+const compressionFolder: string = './compressionImages/'
 
-const jpegOption = {
+const jpegOption: {quality: number} = {
   quality: 50
 }
-const pngOption = {
+const pngOption: {quality: number[]} = {
   quality: [0.3, 0.5]
 }
+const gifOption: {colors: number} = {
+  colors: 128
+}
 
-const convertFileList = []
+const convertFileList: Array<string> = []
 
-const getFileType = (path) => {
+const getFileType = (path: string): string => {
   try {
     const stat = fs.statSync(path)
 
@@ -32,21 +35,22 @@ const getFileType = (path) => {
       default:
         return 'Other'
     }
-  } catch (e) {
+  } catch (_e) {
     throw new Error('File type unknown.')
   }
 }
 
-const listFiles = (dirPath) => {
+const listFiles = (dirPath: string): void => {
   const fileName = fs.readdirSync(dirPath)
-  fileName.forEach((image) => {
+  fileName.forEach((image: string) => {
     const absPath = `${dirPath}/${image}`
     switch (getFileType(absPath)) {
       case 'File':
         if (
-          absPath.includes('.png') ||
           absPath.includes('.jpg') ||
           absPath.includes('.jpeg') ||
+          absPath.includes('.png') ||
+          absPath.includes('.gif') ||
           absPath.includes('.svg')
         ) {
           convertFileList.push(absPath)
@@ -63,7 +67,7 @@ const listFiles = (dirPath) => {
   })
 }
 
-function searchFiles() {
+function searchFiles(): Promise<void> {
   return new Promise((resolve, reject) => {
     try {
       const dirPath = path.resolve(currentFolder)
@@ -74,7 +78,7 @@ function searchFiles() {
   })
 }
 
-async function init() {
+async function init(): Promise<void> {
   await searchFiles()
 
   imagemin(convertFileList, {
@@ -82,7 +86,7 @@ async function init() {
     plugins: [
       imageminMozjpeg(jpegOption),
       imageminPngquant(pngOption),
-      imageminGifsicle(),
+      imageminGifsicle(gifOption),
       imageminSvgo(),
     ],
   })
