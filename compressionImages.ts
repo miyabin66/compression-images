@@ -7,7 +7,7 @@ const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo')
 
 // 圧縮したい画像を入れるフォルダー
-const currentFolder: string = './images/'
+const currentFolder: string = './images'
 // 圧縮された画像が入るフォルダー
 const compressionFolder: string = './compressionImages'
 
@@ -77,8 +77,7 @@ const listFiles = (dirPath: string): void => {
 function searchFiles(): Promise<void> {
   return new Promise((resolve, reject) => {
     try {
-      const dirPath = path.resolve(currentFolder)
-      resolve(listFiles(dirPath))
+      resolve(listFiles(currentPath))
     } catch (e) {
       reject(e)
     }

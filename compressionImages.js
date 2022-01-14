@@ -43,7 +43,7 @@ var imageminPngquant = require('imagemin-pngquant');
 var imageminGifsicle = require('imagemin-gifsicle');
 var imageminSvgo = require('imagemin-svgo');
 // 圧縮したい画像を入れるフォルダー
-var currentFolder = './images/';
+var currentFolder = './images';
 // 圧縮された画像が入るフォルダー
 var compressionFolder = './compressionImages';
 // jpegの圧縮設定
@@ -101,8 +101,7 @@ var listFiles = function (dirPath) {
 function searchFiles() {
     return new Promise(function (resolve, reject) {
         try {
-            var dirPath = path.resolve(currentFolder);
-            resolve(listFiles(dirPath));
+            resolve(listFiles(currentPath));
         }
         catch (e) {
             reject(e);
@@ -125,7 +124,6 @@ function init() {
                             switch (_a.label) {
                                 case 0:
                                     rootPath = path.replace(reg, '').replace(/[^/]*$/, '');
-                                    console.log(rootPath);
                                     return [4 /*yield*/, imagemin([path], {
                                             destination: compressionFolder + rootPath,
                                             plugins: [
