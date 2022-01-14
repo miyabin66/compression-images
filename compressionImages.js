@@ -45,7 +45,7 @@ var imageminSvgo = require('imagemin-svgo');
 // 圧縮したい画像を入れるフォルダー
 var currentFolder = './images/';
 // 圧縮された画像が入るフォルダー
-var compressionFolder = './compressionImages/';
+var compressionFolder = './compressionImages';
 // jpegの圧縮設定
 var jpegOption = {
     quality: 50
@@ -58,6 +58,7 @@ var pngOption = {
 var gifOption = {
     colors: 128
 };
+var currentPath = path.resolve(currentFolder);
 var convertFileList = [];
 var getFileType = function (path) {
     try {
@@ -110,22 +111,36 @@ function searchFiles() {
 }
 function init() {
     return __awaiter(this, void 0, void 0, function () {
+        var reg;
+        var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, searchFiles()];
                 case 1:
                     _a.sent();
-                    imagemin(convertFileList, {
-                        destination: compressionFolder,
-                        plugins: [
-                            imageminMozjpeg(jpegOption),
-                            imageminPngquant(pngOption),
-                            imageminGifsicle(gifOption),
-                            imageminSvgo(),
-                        ],
-                    }).then(function () {
-                        console.log('Compression Finish!');
-                    });
+                    reg = new RegExp(currentPath);
+                    convertFileList.map(function (path) { return __awaiter(_this, void 0, void 0, function () {
+                        var rootPath;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    rootPath = path.replace(reg, '').replace(/[^/]*$/, '');
+                                    console.log(rootPath);
+                                    return [4 /*yield*/, imagemin([path], {
+                                            destination: compressionFolder + rootPath,
+                                            plugins: [
+                                                imageminMozjpeg(jpegOption),
+                                                imageminPngquant(pngOption),
+                                                imageminGifsicle(gifOption),
+                                                imageminSvgo(),
+                                            ],
+                                        })];
+                                case 1:
+                                    _a.sent();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); });
                     return [2 /*return*/];
             }
         });

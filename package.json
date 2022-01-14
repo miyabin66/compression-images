@@ -5,6 +5,7 @@
   "repository": "https://github.com/miyabin66/compression-images.git",
   "author": "miyabin66",
   "scripts": {
+    "dev": "npx tsc && yarn start",
     "start": "node compressionImages.js"
   },
   "license": "MIT",

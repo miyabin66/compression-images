@@ -9,7 +9,7 @@ const imageminSvgo = require('imagemin-svgo')
 // 圧縮したい画像を入れるフォルダー
 const currentFolder: string = './images/'
 // 圧縮された画像が入るフォルダー
-const compressionFolder: string = './compressionImages/'
+const compressionFolder: string = './compressionImages'
 
 // jpegの圧縮設定
 const jpegOption: {quality: number} = {
@@ -23,6 +23,8 @@ const pngOption: {quality: number[]} = {
 const gifOption: {colors: number} = {
   colors: 128
 }
+
+const currentPath = path.resolve(currentFolder)
 
 const convertFileList: Array<string> = []
 
@@ -86,16 +88,18 @@ function searchFiles(): Promise<void> {
 async function init(): Promise<void> {
   await searchFiles()
 
-  imagemin(convertFileList, {
-    destination: compressionFolder,
-    plugins: [
-      imageminMozjpeg(jpegOption),
-      imageminPngquant(pngOption),
-      imageminGifsicle(gifOption),
-      imageminSvgo(),
-    ],
-  }).then(() => {
-    console.log('Compression Finish!')
+  const reg = new RegExp(currentPath)
+  convertFileList.map(async (path) => {
+    const rootPath = path.replace(reg , '').replace(/[^/]*$/, '')
+    await imagemin([path], {
+      destination: compressionFolder + rootPath,
+      plugins: [
+        imageminMozjpeg(jpegOption),
+        imageminPngquant(pngOption),
+        imageminGifsicle(gifOption),
+        imageminSvgo(),
+      ],
+    })
   })
 }
 
