@@ -35,13 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var fs = require('fs');
-var path = require('path');
-var imagemin = require('imagemin');
-var imageminMozjpeg = require('imagemin-mozjpeg');
-var imageminPngquant = require('imagemin-pngquant');
-var imageminGifsicle = require('imagemin-gifsicle');
-var imageminSvgo = require('imagemin-svgo');
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var fs_1 = __importDefault(require("fs"));
+var path_1 = __importDefault(require("path"));
+var imagemin_1 = __importDefault(require("imagemin"));
+var imagemin_mozjpeg_1 = __importDefault(require("imagemin-mozjpeg"));
+var imagemin_pngquant_1 = __importDefault(require("imagemin-pngquant"));
+var imagemin_gifsicle_1 = __importDefault(require("imagemin-gifsicle"));
+var imagemin_svgo_1 = __importDefault(require("imagemin-svgo"));
 // 圧縮したい画像を入れるフォルダー
 var currentFolder = './images';
 // 圧縮された画像が入るフォルダー
@@ -58,11 +62,11 @@ var pngOption = {
 var gifOption = {
     colors: 128
 };
-var currentPath = path.resolve(currentFolder);
+var currentPath = path_1.default.resolve(currentFolder);
 var convertFileList = [];
 var getFileType = function (path) {
     try {
-        var stat = fs.statSync(path);
+        var stat = fs_1.default.statSync(path);
         switch (true) {
             case stat.isFile():
                 return 'File';
@@ -77,7 +81,7 @@ var getFileType = function (path) {
     }
 };
 var listFiles = function (dirPath) {
-    var fileName = fs.readdirSync(dirPath);
+    var fileName = fs_1.default.readdirSync(dirPath);
     fileName.forEach(function (image) {
         var absPath = dirPath + "/" + image;
         switch (getFileType(absPath)) {
@@ -124,13 +128,13 @@ function init() {
                             switch (_a.label) {
                                 case 0:
                                     rootPath = path.replace(reg, '').replace(/[^/]*$/, '');
-                                    return [4 /*yield*/, imagemin([path], {
+                                    return [4 /*yield*/, imagemin_1.default([path], {
                                             destination: compressionFolder + rootPath,
                                             plugins: [
-                                                imageminMozjpeg(jpegOption),
-                                                imageminPngquant(pngOption),
-                                                imageminGifsicle(gifOption),
-                                                imageminSvgo(),
+                                                imagemin_mozjpeg_1.default(jpegOption),
+                                                imagemin_pngquant_1.default(pngOption),
+                                                imagemin_gifsicle_1.default(gifOption),
+                                                imagemin_svgo_1.default(),
                                             ],
                                         })];
                                 case 1:

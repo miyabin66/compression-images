@@ -1,10 +1,10 @@
-const fs = require('fs')
-const path = require('path')
-const imagemin = require('imagemin')
-const imageminMozjpeg = require('imagemin-mozjpeg')
-const imageminPngquant = require('imagemin-pngquant')
-const imageminGifsicle = require('imagemin-gifsicle');
-const imageminSvgo = require('imagemin-svgo')
+import fs from 'fs'
+import path from 'path'
+import imagemin from 'imagemin'
+import imageminMozjpeg, { Options as jpegOptions } from 'imagemin-mozjpeg'
+import imageminPngquant, { Options as pngOptions } from 'imagemin-pngquant'
+import imageminGifsicle, { Options as gifOptions } from 'imagemin-gifsicle'
+import imageminSvgo from 'imagemin-svgo'
 
 // 圧縮したい画像を入れるフォルダー
 const currentFolder: string = './images'
@@ -12,15 +12,16 @@ const currentFolder: string = './images'
 const compressionFolder: string = './compressionImages'
 
 // jpegの圧縮設定
-const jpegOption: {quality: number} = {
+const jpegOption: jpegOptions = {
   quality: 50
 }
 // pngの圧縮設定
-const pngOption: {quality: number[]} = {
+const pngOption: pngOptions = {
   quality: [0.3, 0.5]
 }
+
 // gifの圧縮設定
-const gifOption: {colors: number} = {
+const gifOption: gifOptions = {
   colors: 128
 }
 

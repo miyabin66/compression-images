@@ -41,6 +41,42 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/imagemin-gifsicle@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@types/imagemin-gifsicle/-/imagemin-gifsicle-7.0.1.tgz#0844a96a338438bb98f77b298acf217260d0d409"
+  integrity sha512-kUz6sUh0P95JOS0RGEaaemWUrASuw+dLsWIveK2UZJx74id/B9epgblMkCk/r5MjUWbZ83wFvacG5Rb/f97gyA==
+  dependencies:
+    "@types/imagemin" "*"
+
+"@types/imagemin-mozjpeg@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@types/imagemin-mozjpeg/-/imagemin-mozjpeg-8.0.1.tgz#eaf2f07aea3a317a1710ef2c763ec53f3bcfcdc5"
+  integrity sha512-kMQWEoKxxhlnH4POI3qfW9DjXlQfi80ux3l2b3j5R3eudSCoUIzKQLkfMjNJ6eMYnMWBcB+rfQOWqIzdIwFGKw==
+  dependencies:
+    "@types/imagemin" "*"
+
+"@types/imagemin-pngquant@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@types/imagemin-pngquant/-/imagemin-pngquant-8.0.0.tgz#d163ca43ac1270c5c6f3e9cfbd5d90bd192790d4"
+  integrity sha512-uFncUV7JWfBZj/oCrvD4M0RexrBq0h7Bfm5QBZkGhIxFxw0+ghant31hzKPk/DLd/WLhdgp76ay67fM/oZWNMQ==
+  dependencies:
+    imagemin-pngquant "*"
+
+"@types/imagemin-svgo@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@types/imagemin-svgo/-/imagemin-svgo-10.0.0.tgz#7cfee4f44b65dca0b7ab19d80833114fc016a3cb"
+  integrity sha512-yBsOVpsZhXrTSmn2v06un2bP1XUrdpGSVh6toCQIfsVxkjBYR5DgpaCgv6O+Mh0bTVTsInYyUrTGV60A/sD5gA==
+  dependencies:
+    "@types/imagemin" "*"
+    "@types/svgo" "^1"
+
+"@types/imagemin@*", "@types/imagemin@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@types/imagemin/-/imagemin-8.0.0.tgz#bf5bbe1feff3b112c7e0de06d024712ad261e033"
+  integrity sha512-B9X2CUeDv/uUeY9CqkzSTfmsLkeJP6PkmXlh4lODBbf9SwpmNuLS30WzUOi863dgsjY3zt3gY5q2F+UdifRi1A==
+  dependencies:
+    "@types/node" "*"
+
 "@types/minimatch@*":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.4.tgz#f0ec25dbf2f0e4b18647313ac031134ca5b24b21"
@@ -50,6 +86,11 @@
   version "14.14.41"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.41.tgz#d0b939d94c1d7bd53d04824af45f1139b8c45615"
   integrity sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==
+
+"@types/svgo@^1":
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/@types/svgo/-/svgo-1.3.6.tgz#9db00a7ddf9b26ad2feb6b834bef1818677845e1"
+  integrity sha512-AZU7vQcy/4WFEuwnwsNsJnFwupIpbllH1++LXScN6uxT1Z4zPzdrWG97w4/I7eFKFTvfy/bHFStWjdBAg2Vjug==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -984,7 +1025,7 @@ imagemin-mozjpeg@^9.0.0:
     is-jpg "^2.0.0"
     mozjpeg "^7.0.0"
 
-imagemin-pngquant@^9.0.2:
+imagemin-pngquant@*, imagemin-pngquant@^9.0.2:
   version "9.0.2"
   resolved "https://registry.yarnpkg.com/imagemin-pngquant/-/imagemin-pngquant-9.0.2.tgz#38155702b0cc4f60f671ba7c2b086ea3805d9567"
   integrity sha512-cj//bKo8+Frd/DM8l6Pg9pws1pnDUjgb7ae++sUX1kUVdv2nrngPykhiUOgFeE0LGY/LmUbCf4egCHC4YUcZSg==
