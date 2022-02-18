@@ -75,7 +75,7 @@ const listFiles = (dirPath: string): void => {
   })
 }
 
-function searchFiles(): Promise<void> {
+const searchFiles = (): Promise<void> => {
   return new Promise((resolve, reject) => {
     try {
       resolve(listFiles(currentPath))
@@ -85,7 +85,7 @@ function searchFiles(): Promise<void> {
   })
 }
 
-async function init(): Promise<void> {
+const init = async(): Promise<void> => {
   await searchFiles()
 
   const reg = new RegExp(currentPath)

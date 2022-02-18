@@ -102,7 +102,7 @@ var listFiles = function (dirPath) {
         }
     });
 };
-function searchFiles() {
+var searchFiles = function () {
     return new Promise(function (resolve, reject) {
         try {
             resolve(listFiles(currentPath));
@@ -111,42 +111,39 @@ function searchFiles() {
             reject(e);
         }
     });
-}
-function init() {
-    return __awaiter(this, void 0, void 0, function () {
-        var reg;
-        var _this = this;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, searchFiles()];
-                case 1:
-                    _a.sent();
-                    reg = new RegExp(currentPath);
-                    convertFileList.map(function (path) { return __awaiter(_this, void 0, void 0, function () {
-                        var rootPath;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    rootPath = path.replace(reg, '').replace(/[^/]*$/, '');
-                                    return [4 /*yield*/, imagemin_1.default([path], {
-                                            destination: compressionFolder + rootPath,
-                                            plugins: [
-                                                imagemin_mozjpeg_1.default(jpegOption),
-                                                imagemin_pngquant_1.default(pngOption),
-                                                imagemin_gifsicle_1.default(gifOption),
-                                                imagemin_svgo_1.default(),
-                                            ],
-                                        })];
-                                case 1:
-                                    _a.sent();
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); });
-                    return [2 /*return*/];
-            }
-        });
+};
+var init = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var reg;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, searchFiles()];
+            case 1:
+                _a.sent();
+                reg = new RegExp(currentPath);
+                convertFileList.map(function (path) { return __awaiter(void 0, void 0, void 0, function () {
+                    var rootPath;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                rootPath = path.replace(reg, '').replace(/[^/]*$/, '');
+                                return [4 /*yield*/, imagemin_1.default([path], {
+                                        destination: compressionFolder + rootPath,
+                                        plugins: [
+                                            imagemin_mozjpeg_1.default(jpegOption),
+                                            imagemin_pngquant_1.default(pngOption),
+                                            imagemin_gifsicle_1.default(gifOption),
+                                            imagemin_svgo_1.default(),
+                                        ],
+                                    })];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
+        }
     });
-}
+}); };
 init();
 //# sourceMappingURL=compressionImages.js.map
