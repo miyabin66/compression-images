@@ -13,16 +13,16 @@ const compressionFolder: string = './compressionImages'
 
 // jpegの圧縮設定
 const jpegOption: jpegOptions = {
-  quality: 50
+  quality: 70
 }
 // pngの圧縮設定
 const pngOption: pngOptions = {
-  quality: [0.3, 0.5]
+  quality: [0.6, 0.8]
 }
 
 // gifの圧縮設定
 const gifOption: gifOptions = {
-  colors: 128
+  colors: 256
 }
 
 const currentPath = path.resolve(currentFolder)

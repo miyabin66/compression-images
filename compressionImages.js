@@ -52,15 +52,15 @@ var currentFolder = './images';
 var compressionFolder = './compressionImages';
 // jpegの圧縮設定
 var jpegOption = {
-    quality: 50
+    quality: 70
 };
 // pngの圧縮設定
 var pngOption = {
-    quality: [0.3, 0.5]
+    quality: [0.6, 0.8]
 };
 // gifの圧縮設定
 var gifOption = {
-    colors: 128
+    colors: 256
 };
 var currentPath = path_1.default.resolve(currentFolder);
 var convertFileList = [];
